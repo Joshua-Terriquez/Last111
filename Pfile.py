@@ -1,10 +1,13 @@
 import time
 import sqlite3
 from sqlite3 import Error
+
 def return_list(filename):
 with open(filename, "r") as file:
 read_line = (file.read().splitlines())
 return read_line
+
+
 def openConnection(_dbFile):
 print("++++++++++++++++++++++++++++++++++")
 print("Open database: ", _dbFile)
@@ -17,6 +20,8 @@ except Error as e:
 print(e)
 print("++++++++++++++++++++++++++++++++++")
 return conn
+
+
 def closeConnection(_conn, _dbFile):
 print("++++++++++++++++++++++++++++++++++")
 print("Close database: ", _dbFile)
@@ -26,6 +31,9 @@ print("success")
 except Error as e:
 print(e)
 print("++++++++++++++++++++++++++++++++++")
+
+
+
 def build_data_cube(_conn):
 print("++++++++++++++++++++++++++++++++++")
 print("BUILD DATA CUBE")
@@ -36,6 +44,10 @@ print(query)
 #_conn.execute('update price_cube set tot_pr')
 # max = randint(4,12)
 print("++++++++++++++++++++++++++++++++++")
+
+
+
+
 def print_Product(_conn):
 print("++++++++++++++++++++++++++++++++++")
 print("PRINT PRODUCT")
@@ -48,6 +60,10 @@ print('{:<20} {:<20} {:<20}'.format(item[0],item[1],'NULL'))
 else:
 print('{:<20} {:<20} {:<20}'.format(item[0],item[1],item[2]))
 print("++++++++++++++++++++++++++++++++++")
+
+
+
+
 def print_Distributor(_conn):
 print("++++++++++++++++++++++++++++++++++")
 print("PRINT DISTRIBUTOR")
@@ -60,6 +76,9 @@ print('{:<20} {:<20} {:<20}'.format(item[0],item[1],'NULL'))
 else:
 print('{:<20} {:<20} {:<20}'.format(item[0],item[1],item[2]))
 print("++++++++++++++++++++++++++++++++++")
+
+
+
 def print_Cube(_conn):
 print("++++++++++++++++++++++++++++++++++")
 print("PRINT DATA CUBE")
@@ -70,6 +89,9 @@ for item in result:
 print('{:<20} {:<20} {:>10} {:>10}'.format(item[0], item[1],
 item[2],item[3]))
 print("++++++++++++++++++++++++++++++++++")
+
+
+
 def modifications(_conn):
 print("++++++++++++++++++++++++++++++++++")
 print("MODIFICATIONS")
@@ -101,6 +123,11 @@ print("Running query: {}".format(query))
 time.sleep(0.2)
 _conn.execute(query)
 print("++++++++++++++++++++++++++++++++++")
+
+
+
+
+
 def main():
 database = r"data.sqlite"
 # create a database connection
